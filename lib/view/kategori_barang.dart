@@ -50,7 +50,8 @@ class _KategoriBarangState extends State<KategoriBarang> {
             child: ListTile(
               title: Text(listKategoriBarang[index].nama),
               trailing: Row(
-                children: [
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.edit),
