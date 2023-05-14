@@ -3,6 +3,7 @@ import 'dart:convert';
 //klik kanan trus pilih "generate data class"
 class KategoriBarangModel {
   final String nama;
+
   KategoriBarangModel({
     required this.nama,
   });

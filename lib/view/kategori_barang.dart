@@ -25,18 +25,16 @@ class _KategoriBarangState extends State<KategoriBarang> {
     getKategoriBarang();
   }
 
-  
-
   void getKategoriBarang() async {
     final kategoriBarang = await kategoriBarangController.getKategoriBarang();
     setState(() {
       listKategoriBarang = kategoriBarang;
     });
   }
+
   void deleteKategoriBarang(int id) async {
     await kategoriBarangController.deleteKategoriBarang(id);
-  
-  
+  }
 
   @override
   Widget build(BuildContext context) {
