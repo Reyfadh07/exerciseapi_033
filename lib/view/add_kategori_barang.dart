@@ -27,6 +27,17 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tambah Kategori Barang'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_circle_left_outlined),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const KategoriBarang(),
+              ),
+            ); // Kembali ke halaman sebelumnya
+          },
+        ),
       ),
       body: Form(
         key: formkey,

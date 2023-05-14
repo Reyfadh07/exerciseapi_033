@@ -27,7 +27,7 @@ class KategoriBarangController {
     if (result.statusCode == 200) {
       return jsonDecode(result.body);
     } else {
-      throw Exception('Gagal manambahkan data kategori barang :) ');
+      throw Exception('Gagal menambahkan data kategori barang :) ');
     }
   }
 
