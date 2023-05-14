@@ -14,6 +14,7 @@ class AddKategoriBarang extends StatefulWidget {
 class _AddKategoriBarangState extends State<AddKategoriBarang> {
   final kategoriBarangController = KategoriBarangController();
   String? nama;
+  //int? index;
 
   void addKategoriBarang() async {
     KategoriBarangModel kategoriBarang = KategoriBarangModel(nama: nama!);
@@ -34,15 +35,15 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
           children: [
             TextFormField(
               decoration: const InputDecoration(
-                hintText: 'Nama Kategori Barang',
                 labelText: 'Nama Kategori Barang',
+                hintText: 'Nama Kategori Barang',
               ),
               onChanged: (value) {
                 nama = value;
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Nama Kategori is required';
+                  return 'Nama Kategori Diperlukan';
                 }
                 return null;
               },
@@ -52,11 +53,12 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
               onPressed: () {
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                  addKategoriBarang();
+
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const KategoriBarang()));
+                  addKategoriBarang();
 
                   var snackBar =
                       const SnackBar(content: Text('Data Berhasil Disimpan'));
