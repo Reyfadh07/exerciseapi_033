@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_api/controller/kategori_barang_controller.dart';
-import 'package:flutter_api/model/kategori_barang_model.dart';
-import 'package:flutter_api/view/add_kategori_barang.dart';
+import 'package:materiapi/controller/kategori_barang_controller.dart';
+import 'package:materiapi/model/kategori_barang_model.dart';
+import 'package:materiapi/view/kategori_barang.dart';
+
+import '../model/kategori_barang_model.dart';
+import 'add_kategori_barang.dart';
 
 class KategoriBarang extends StatefulWidget {
   const KategoriBarang({super.key});
