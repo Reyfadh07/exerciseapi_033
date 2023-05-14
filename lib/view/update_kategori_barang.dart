@@ -2,14 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../controller/kategori_barang_controller.dart';
+import 'kategori_barang.dart';
+
 class UpdateKategoriBarang extends StatefulWidget {
-  const UpdateKategoriBarang({super.key});
+  final int? id;
+  final String? nama;
+
+  const UpdateKategoriBarang({
+    Key? key,
+    this.nama,
+    this.id,
+  }) : super(key: key);
 
   @override
   State<UpdateKategoriBarang> createState() => _UpdateKategoriBarangState();
 }
 
 class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
+  final kategoriBarangController = KategoriBarangController();
+  String? name;
+
+  void updateKategoriBarang(int id, String nama) async {
+    await kategoriBarangController.updateKategoriBarang(id, nama);
+  }
+
   @override
   Widget build(BuildContext context) {
     var formkey = GlobalKey<FormState>();
@@ -27,7 +44,10 @@ class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
                 hintText: 'Nama Kategori Barang',
                 labelText: 'Nama Kategori Barang',
               ),
-              onChanged: (value) {},
+              onChanged: (value) {
+                name = value;
+              },
+              initialValue: widget.nama,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Nama Kategori is required';
@@ -38,7 +58,19 @@ class _UpdateKategoriBarangState extends State<UpdateKategoriBarang> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                if (formkey.currentState!.validate()) {}
+                if (formkey.currentState!.validate()) {
+                  formkey.currentState!.save();
+                  kategoriBarangController.updateKategoriBarang(
+                      widget.id!, name!);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KategoriBarang()));
+
+                  var snackBar =
+                      const SnackBar(content: Text('Data Berhasil Diubah'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
               },
               child: const Text('Simpan'),
             ),

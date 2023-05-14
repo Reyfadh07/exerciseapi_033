@@ -35,15 +35,15 @@ class _AddKategoriBarangState extends State<AddKategoriBarang> {
           children: [
             TextFormField(
               decoration: const InputDecoration(
-                labelText: 'Nama Kategori Barang',
-                hintText: 'Nama Kategori Barang',
+                labelText: 'Nama Kategori Barang :)',
+                hintText: 'Nama Kategori Barang :)',
               ),
               onChanged: (value) {
                 nama = value;
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Nama Kategori Diperlukan';
+                  return 'Nama Kategori Diperlukan ';
                 }
                 return null;
               },
