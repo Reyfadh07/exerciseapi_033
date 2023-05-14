@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
-import '../controller/kategori_barang_controller.dart';
-import '../model/kategori_barang_model.dart';
+import 'package:flutter_api/controller/kategori_barang_controller.dart';
+import 'package:flutter_api/model/kategori_barang_model.dart';
+import 'package:flutter_api/view/add_kategori_barang.dart';
 
 class KategoriBarang extends StatefulWidget {
   const KategoriBarang({super.key});
@@ -15,11 +13,18 @@ class KategoriBarang extends StatefulWidget {
 class _KategoriBarangState extends State<KategoriBarang> {
   final kategoriBarangController = KategoriBarangController();
   List<KategoriBarangModel> listKategoriBarang = [];
+  String? nama;
 
   @override
   void initState() {
     super.initState();
+    getKategoriBarang();
   }
+
+  // void deleteKategoriBarang() async {
+  //   KategoriBarangModel kategoriBarang = KategoriBarangModel(nama: nama!);
+  //   await kategoriBarangController.deleteKategoriBarang(kategoriBarang);
+  // }
 
   void getKategoriBarang() async {
     final kategoriBarang = await kategoriBarangController.getKategoriBarang();
@@ -30,51 +35,43 @@ class _KategoriBarangState extends State<KategoriBarang> {
 
   @override
   Widget build(BuildContext context) {
-    var formkey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah Kategori Barang'),
+        title: const Text('Kategori Barang'),
       ),
-      body: Form(
-        key: formkey,
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Nama Kategori Barang',
-                labelText: 'Nama Kategori Barang',
+      body: SafeArea(
+          child: ListView.builder(
+        itemCount: listKategoriBarang.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              title: Text(listKategoriBarang[index].nama),
+              trailing: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.edit),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      //deleteKategoriBarang();
+                    },
+                    icon: const Icon(Icons.delete),
+                  )
+                ],
               ),
-              onChanged: (value) {
-                nama = value;
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Nama Kategori is required';
-                }
-                return null;
-              },
             ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                if (formkey.currentState!.validate()) {
-                  formkey.currentState!.save();
-                  addKategoriBarang();
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KategoriBarang()));
-
-                  var snackBar =
-                      const SnackBar(content: Text('Data Berhasil Disimpan'));
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                }
-              },
-              child: const Text('Simpan'),
-            ),
-          ],
-        ),
+          );
+        },
+      )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AddKategoriBarang()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
