@@ -1,16 +1,29 @@
 # materiapi
 
-A new Flutter project.
+exerciseapi_033
 
-## Getting Started
+## hasil running aplikasi pada repository github
 
-This project is a starting point for a Flutter application.
+## 1. Halaman Awal Kategori Barang
 
-A few resources to get you started if this is your first Flutter project:
+![Alt text](gambarSS/hal_kategori_barang.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 2. Halaman Tambah Kategori Barang
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Alt text](gambarSS/hal_tambah_barang.png)
+
+## 3. Bukti Tambah Kategori Barang Berhasil
+
+![Alt text](gambarSS/data_berhasil_disimpan.png)
+
+## 4. Halaman Edit Kategori Barang
+
+![Alt text](gambarSS/hal_edit_barang.png)
+
+## 5. Bukti Edit Kategori Barang Berhasil
+
+![Alt text](gambarSS/data_berhasil_diubah.png)
+
+## 6. Halaman Hapus Kategori Barang
+
+![Alt text](gambarSS/delete_data_kentang_goreng.png)
